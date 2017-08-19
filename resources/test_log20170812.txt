@@ -1,0 +1,24 @@
+Test Log: 2017-08-12
+Tested today with Stuffel The Bear, tried out the multiplayer commands.
+
+- !infou can't handle user tags with spaces (ALL FIXED)
+	- !infou also only shows your owned faction if you have one
+	- !infou shows energy - don't show
+- !infoo bugs fixed
+	- Improved !infoo to show Gem production range for Harvesters
+- !infof shows Energy for fullInfo=false (FIXED)
+	- Don't show the energy!
+	
+- !upgrade needs to show remaining Steel after upgrade.
+	- Fixed, changed return messages.
+	
+- !strike has bugs (FIXED)
+	- I suffer more casualities then troops I've sent
+	- My source outpost has negative troops
+	- Player.resources["Troops"] isn't updated after casualities in battle
+		- This is true for attackers and defenders
+	
+- The time system is high.
+	- Won't collect resources
+	- Won't put ticks forward properly
+	- Uggggggggggggggggggh

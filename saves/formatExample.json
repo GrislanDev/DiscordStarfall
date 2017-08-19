@@ -1,0 +1,57 @@
+{
+"players": 
+	{
+	"Blue": 
+		{
+		"resources": 
+			{
+			"Troops": 0, 
+			"Steel": 49, 
+			"Gems": 0, 
+			"Pop": 50
+			}, 
+		"allocation": 
+			{
+			"Faith": 0, 
+			"Fortitude": 0, 
+			"Intelligence": 0, 
+			"Strength": 0, 
+			"Harmony": 0
+			}, 
+		"bonus": {
+			"Troops": 0, 
+			"Steel": 0, 
+			"Gems": 0, 
+			"Pop": 0
+			}, 
+		"name": "Blue", 
+		"points": 0, 
+		"outposts": [["Minoris","Majoris"]]
+		}
+	}, 
+"outposts": 
+	{
+	"Minoris": {
+		"owner": "Blue", 
+		"typ": "Steel", 
+		"bounty": 49, 
+		"location": 2, 
+		"bonus": 0, 
+		"troops": 0, 
+		"name": "Minoris", 
+		"level": 1, 
+		"pop": 25
+		},
+	"Majoris":{
+		"owner": "Blue", 
+		"typ": "Gems", 
+		"bounty": 49, 
+		"location": 2, 
+		"bonus": 0, 
+		"troops": 0, 
+		"name": "Majoris", 
+		"level": 1, 
+		"pop": 25
+		}
+	}
+}

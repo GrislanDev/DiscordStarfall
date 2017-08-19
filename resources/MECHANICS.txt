@@ -1,0 +1,38 @@
+MECHANICS EXPLANATION
+
+Player Goal:
+	- Gain outposts through capturing or creating them
+	- Maintain control of outposts to gather resources
+	
+Resources:
+	- Steel
+		- Used to upgrade and create outposts
+		- Used to create shields, missiles, and flagships
+		- Production increased by Intelligence
+	- Gems
+		- Used to train Troops
+		- Collection through outposts has RNG element
+			- Gem Outposts won't generate a constant amount
+		- Production increased by Harmony
+	- Troops
+		- Used to defend owned outposts and attack enemy outposts
+		- Attack power and training cost increased by Strength
+		- Defense power increased by Fortitude
+		- Retreat chance decreased by Faith
+	- Population
+		- Used to house Troops
+		- All outposts contribute to population count
+		- Population of Arks increased by Harmony
+		
+Outpost Types:
+	- Forges
+		- Generate Steel at constant rate
+		- Production increased by Intelligence
+		- Production higher in the Outer Rim
+	- Harvesters
+		- Generate Gems at variable rate
+		- Production increased by Harmony
+	- Arks
+		- Hold high populations
+		- Population increased by Harmony
+		

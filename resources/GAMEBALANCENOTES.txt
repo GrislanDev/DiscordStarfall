@@ -1,0 +1,15 @@
+Outpost upgrade costs rise rapidly, while Outpost Populations rise slower.
+Assuming the cost of Troops is 5 Gems, it'd be cheaper to upgrade a level N
+outpost than to invade a fully fortified level N outpost for (2 <= N <= 5).
+
+This means player's won't get heavily involved in combat until level 6, where it's more
+efficient. An outposts bounty increases constantly. Y = 5X + 20
+
+==================================
+Introduce expensive tech to try in higher levels, so players level slower
+Players have a Glory count - this measures their standing
+	- Instantly increased by combat 
+	- Every tick players face Glory decay
+		- After tick applied, add Glory for allies
+			- Players have incentive to team up
+		- Add Glory for value of outposts

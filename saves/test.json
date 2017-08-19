@@ -1,0 +1,52 @@
+{
+	"players" : [
+		{
+			"name" : "Blue",
+			"resources" : {
+				"Gems" : 0,
+				"Steel" : 0,
+				"Pop" : 0,
+				"Troops" : 0
+			},
+			"bonus" : {
+				"Gems" : 0,
+				"Steel" : 0,
+				"Pop" : 0,
+				"Troops" : 0
+			}
+			"allocation" : {
+				"Faith" : 0,
+				"Intelligence" : 0,
+				"Strength" : 0,
+				"Fortitude" : 0,
+				"Harmony" : 0,
+			}
+			"outposts" : [
+			]
+		},
+		{
+			"name" : "Red",
+			"resources" : {
+				"Gems" : 0,
+				"Steel" : 0,
+				"Pop" : 0,
+				"Troops" : 0
+			},
+			"bonus" : {
+				"Gems" : 0,
+				"Steel" : 0,
+				"Pop" : 0,
+				"Troops" : 0
+			}
+			"allocation" : {
+				"Faith" : 0,
+				"Intelligence" : 0,
+				"Strength" : 0,
+				"Fortitude" : 0,
+				"Harmony" : 0,
+			}
+			"outposts" : [
+			]
+		}
+	]
+}

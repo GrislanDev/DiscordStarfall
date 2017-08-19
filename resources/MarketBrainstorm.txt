@@ -1,0 +1,38 @@
+The Market
+
+Note: 'Gold' is the stand-in name for the currency of the Warlocks. Will come up with something better.
+========================================================================================================================================================================================
+
+Mechanical Purpose:
+	- Allow players to trade
+		- Players must pay a fee in Gold, fee scales up with the amount of goods being traded
+			- Donations between allies don't pass through the Market and aren't taxed as such
+		- Trades expire after 3 hours but can be renewed for a cost in Gold
+		- All trades automatically expire at 00:00:00
+	- Offer bounties (aka quests) for players to complete
+		- The main way for players to earn Gold
+		- Mainly focuses on attacking other players
+		- Some bounty examples:
+			- Control <> until <>
+			- Destroy <> of <>'s troops
+		- The target of a bounty, and the target's allies cannot see the offer
+	- Allow players to hire saboteurs
+		- Saboteurs cost Gold and carry out attacks on outposts
+		- When the target learns about the sabotage only the saboteur's name is given
+			- The hirer remains anonymous
+			- This can cause instability and start wars if done cleverly
+			- Sabotage is not an official act of war
+	- Allow players to use Gold to buy information such as
+		- A player's amount of Gems
+		- A player's amount of Steel
+		- A player's amount of Gold
+		- A player's <> most recent actions
+		- The organizers of the <> most recent sabotages
+		- If there are any bounties on a player
+		- Allies of another player
+	
+Lore:
+In their efforts to regain power some Warlocks have decided to do business with the Factions.
+They hope to destabilize the Factions through their dealings, as they know they aren't powerful
+enough to carry out a head-on war. Let the Factions destroy themselves.
+

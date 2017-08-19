@@ -1,0 +1,206 @@
+COMMANDS LIST (Help screen draft)
+
+Commands marked with (C) after their name have been coded but not implemented with the bot.
+Commands marked with (I) after their name have been implemented.
+Commands marked with (T) after their name have been implemented and tested.
+	The number after the T shows the # of cases left to test if the command is partially tested.
+===============================================================================
+These don't require an account:
+
+start (T)
+	Syntax: "!start faction"
+	Creates a new account under the name faction for the Discord user. 
+	
+	faction - Name for faction
+
+	Limits:
+	- faction must be alphanumeric and availible
+	- User can't already have an account
+
+lore (T)
+	Syntax: "!lore"
+	Tells user the history of DiscordStarfall.
+
+help (T)
+	Syntax: "!help command"
+	Provides syntax and usage information of command.
+
+	command - Name of command
+
+	Limits:
+	- Command must exist
+
+tut
+	Syntax: "!tut topic"
+	A short tutorial of a topic in Starfall.
+
+	topic - Topic to be explained
+
+	Limits:
+	- topic must have availible tutorial
+	
+flist (T)
+	Syntax: "!flist"
+	Lists all existing factions.
+	
+olist (T)
+	Syntax: "!olist"
+	Lists all existing outposts.
+	
+infoo (T)
+	Syntax: "!infoo outpost"
+	Shows information on an outpost. Addtional information is shown for controlled outposts.
+	
+	outpost - Name of outpost
+
+	Limits:
+	- Outpost must exist
+	- If not owned:
+		- Level, Location, Type, Troop Capacity, Owner
+	- If owned:
+		- Info above, upgrade cost, current # of troops, bounty (if applicable)
+
+infof (T)
+	Syntax: "!infof faction"
+	Shows basic information of faction.
+	
+	faction - Name of faction
+
+	Limits:
+	- Faction must exist
+	- If other faction:
+		- Outposts, Troop Capacity
+	- If self:
+		- Info above, Resources, Resource Production, Troop-Population Ratio, Energy
+
+infou (T)
+	Syntax: "!infoo user"
+	Shows basic in-game information of user.
+	
+	user - ID of user
+
+	Limits:
+	- User must have an account
+
+-------------------------------------------------------------------------------
+These require an account:
+	
+upgrade (T)
+	Syntax: "!upgrade outpost"
+	Upgrades an outpost under the player's control. See "!tuts outpost" for more info.
+
+	outpost - Name of outpost to be upgraded
+
+	Limits:
+	- Outpost must exist and be controlled by user
+	- User must be able to afford the upgrade
+
+build (T)
+	Syntax: "!build outpost location"
+	Builds an outpost at the specified location. See "!tuts outpost" for more info.
+
+	outpost - Name of created outpost
+	location - Ring where outpost is located
+
+	Limits:
+	- Outpost name must be availible and alphanumeric
+	- Location must be in ["Core","Inner","Middle","Outer","Rim"] or range(0,4)
+	- Player must be able to afford cost of building (basically upgrade cost for level 1)
+
+reinforce (T)
+	Syntax: "!reinforce troops destination source" 
+	Moves troops from a controlled outpost to reinforce another. See "!tuts battle" for more info.
+
+	troops - Amount of troops moved
+	destination - Name of outpost receiving troops
+	source - Name of outpost sending troops
+
+	Limits:
+	- Troops must be positive integer
+	- Destination population must be able to support troops	
+	- Source must have enough troops to send
+	- Both source and destination must be controlled outposts
+	- Player must have energy required to reinforce
+
+train (T)
+	Syntax: "!train troops outpost"
+	Trains troops at a controlled outpost. See "!tuts battle" for more info.
+
+	troops - Number of troops trained
+	outpost - Name of outpost where troops will be trained
+
+	Limits:
+	- Troops must be positive integer
+	- Outpost must be controlled and have adequate population
+	- Player must be able to afford training 
+
+strike (T)
+	Syntax: "!strike troops target source"
+	Sends troops to strike target outpost - this is an act of war. See "!tut battle" for more info.
+
+	troops - Number of troops sent
+	target - Name of outpost targeted by strike
+	source - Name of controlled outpost sending troops
+	
+	Limits:
+	- Troops must be positive integer
+	- Source outpost must be owned
+	- Owner of targer outpost can't be an ally
+
+-------------------------------------------------------------------------------
+These require an account, but deal with social interactions:
+
+askally
+	Syntax: "!askally faction"
+	Sends an alliance request to faction lasting 1 day. Will renew any pending request. See "!tuts ally" for more info.
+
+	faction - Name of faction we request alliance from
+
+	Limits:
+	- Faction must exist and not already be an ally
+	- Faction can't be an enemy
+
+okally
+	Syntax: "!okally faction"
+	Accepts pending alliance from faction. See "!tuts ally" for more info.
+
+	faction - Name of faction requesting alliance
+
+	Limits:
+	- Request must currently be pending (requests expire after 1 day)
+
+noally
+	Syntax: "!noally faction"
+	Rejects pending alliance from faction. See "!tuts ally" for more info.
+
+	faction - Name of faction requesting alliance
+
+	Limits:
+	- Request must currently be pending (requests expire after 1 day)
+
+askpeace
+	Syntax: "!askpeace faction"
+	Sends a peace request to faction lasting 3 days. Will renew any pending request. See "!tuts war" for more info.
+	
+	faction - Enemy faction we request peace with
+
+	Limits:
+	- Faction must be an enemy
+
+okpeace
+	Syntax: "!okpeace faction"
+	Accepts pending peace request from faction. See "!tuts war" for more info.
+	
+	faction - Enemy faction requesting peace
+
+	Limits:
+	- Request must currently be pending (requests expire after 1 day)
+
+nopeace
+	Syntax: "!nopeace faction"
+	Rejects pending peace request from faction. See "!tuts war" for more info.
+	
+	faction - Enemy faction requesting peace
+
+	Limits:
+	- Request must currently be pending (requests expire after 1 day)

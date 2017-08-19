@@ -1,0 +1,50 @@
+TUTS - Provides explanations of topics in Starfall.
+
+Topics:
+ally, battle, outpost, resources, shards, war
+=========================================================================================
+ALLY:
+When two factions are in an alliance they can reinforce each other's outposts and donate
+to each other. Allied factions can't commit acts of war towards each other. A player can
+send a request for alliance, but can't commit acts of war towards the other player until
+the request is accepted, rejected, or expires. See "!tuts war" for more info.
+
+BATTLE:
+You can send troops to strike enemy outposts. Outposts can be defended by training troops
+or reinforcing them (moving troops from other outposts). Striking takes 1 energy if the
+outpost you send troops from is in the same Rim as the target. 1 energy is added per
+extra Rim your troops must travel.
+
+Having more troops increases the damage your strike can inflict on an enemy outpost, 
+though victory isn't guaranteed. After the strike, if the outpost has no troops left your 
+remaining troops will invade and claim the outpost for you. 
+
+A strike is an act of war - see "!tuts war" for more info.
+
+OUTPOST:
+The gameplay of Starfall revolves around the control of outposts which provide the player
+with different resources and advantages. Outposts can be upgraded and captured through
+battle. Each outpost has a population of how many troops it can hold. 
+
+Outposts are located in one of the five Rims of the galaxy. Distances between outposts 
+determine the energy costs of striking and reinforcing outposts. 
+
+Arks have high-populations and serve as military strongholds.
+Harvesters produce Gems at a random rate for training troops.
+Forges produce Steel at a constant rate for upgrading and constructing outposts.
+Citadels can move between Rims and launch missiles.
+
+RESOURCES:
+Resources are obtained through controlling outposts, trade, and donations.
+
+Steel is produced by Forges and is used to upgrade and build outposts. 
+Gems are produced by Harvesters and are used to train troops.
+Troops are trained with Gems and are used to attack and defend outposts.
+
+WAR:
+When two factions are at war they can't trade, request alliances, and donate to each
+other. A player can send a request for peace but will not be able to commit acts of
+war until the request is accepted, rejected, or expires. Commiting an act of war will
+automatically reject any requests for peace.
+
+Acts of war include: striking outposts and launching missiles
