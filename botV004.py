@@ -1,5 +1,5 @@
 """
-Discord Bot as UI for Starfall. Currently compatible with mainV008.
+Discord Bot as UI for Starfall. Currently compatible with mainV010.
 
 Features:
     start, lore, upgrade, build, train commands stable
@@ -11,14 +11,14 @@ import asyncio
 from discord.ext.commands import Bot
 from discord.ext import commands
 
-from mainV009 import *
+from mainV010 import *
 import text
 
 Client = discord.Client()
 bot_prefix= "$"
 client = commands.Bot(command_prefix=bot_prefix)
 
-world = World("saves\\ZortanTest.json")
+world = World("saves\\V001ZortanLiveTest.json")
 command_info = text.command_info
 tut_info = text.tut_info
 

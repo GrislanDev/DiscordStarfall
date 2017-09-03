@@ -195,7 +195,22 @@ Short-Term Goals (Due August 19): ---> Completed August 17
 - Dereck offered to host with Rasp Pi
 	- I'll need to put Starfall on Github
 
-Update Goals (not counting fixes and patches):
+"2017-08-25 mainV010"
+- reapBounty() and update() now take an extra argument "ticks"
+	- Shows how many ticks that need to be simulated
+	- update_time() now passes ticks to update() rather than calling update ticks times
+	- reapBounty() multiplied the bounty given by ticks so it only needs to be called once
+- Player has new attribute, int offline
+	- Shows number of offline ticks the player can still collect resources during
+	- Player stops collecting resources after 1/2 day offline
+		- This is still a ridiculous amount of resources btw
+	- Behaviour implemented in reapBounty(), which limits ticks and updates Player.offline
+- Added "minSteel" and "minGems" to stats.json
+	- If the player has no outposts they're given this minimum income per tick
+	- Basic rubber banding to help players get back on their feet
+- mainV009 moved to outdated folder
+- Removed players sHaDyMen, Arken, and Gondor (and related outposts and accounts)
+- botV004 now uses V001ZortanLiveTest.json
 
 1.1 Ascension Update
 	- news, allocate, infof^, tuts^, help^
