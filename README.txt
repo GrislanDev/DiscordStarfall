@@ -212,17 +212,52 @@ Short-Term Goals (Due August 19): ---> Completed August 17
 - Removed players sHaDyMen, Arken, and Gondor (and related outposts and accounts)
 - botV004 now uses V001ZortanLiveTest.json
 
+"2017-09-03 General Patch 2 - mainV011"
+- Issue: update_time() uses local time of server to check elasped time
+	- If server runs in a different timezone than it did previously times aren't handled properly
+	- Will change so update_time() uses UTC time of server to check
+- Added update_world=True argument to update_time()
+	- If False, will update time without updating world
+	- Allows for cleaning up the time.json file
+		- In case of future fixes to the time system
+- botV004 now uses mainV011
+- Moved mainV010 to outdated
+- Created outdated subfolder in saves
+
+"2017-09-04 General Patch 3 - botV005"
+- Added tip to visit 'tut' in start message 'Welcome to Starfall'
+- Added convert_id() function to botV005
+	- Converts Discord username to numerical id for id purposes
+	- Will use as key for accounts, this stays constant
+	- Assumes usernames only have 1 '#' character
+- Commented header of on_message()
+	- New local variable <str> 'author' stores id from convert_id(str(message.author))
+- Changed most references of 'message.author' to author as needed
+	- Left as 'message.author' in 'lore' command
+	- Command uses username in the text
+- Fixed issue:
+	- Discord users can change their usernames
+	- Accounts are stored under usernames, so users may lose access
+	- Change key values in world.save.accounts to user id instead
+		- Create helper function to fetch id (or find one in discord API)
+	- Changed infou to take usernames but look for the id
+	- Users can immediately be searched using @username, it ignores the @
+
 1.1 Ascension Update
 	- news, allocate, infof^, tuts^, help^
 	- Adds news command to show events that have occured since the player last used news
 		- Different items in the log have levels of importance, determining how long they stay in the log
 		- Log will have max # of items for each level of importance? Need to keep memory low
-	- Adds levelling to each faction
-		- Factions gain EXP through combat (high stakes, high EXP)
-		- Factions gain EXP through upgrading outposts (not building them)
-		- When a faction levels up they get a Nexon Shard
-		- Level determines the max amount of resources you can store	
-			- This doesn't limit troops
+			- News will be shrunken to basic info: [ticks since creation, timestring, eventtype, eventinfo[]]
+	- Adds ranking to each faction
+		- Factions gain Prestige through combat (high stakes, high Prestige)
+			- Need a function to determine Prestige gains from battle
+		- Factions gain Prestige through upgrading outposts (not building them)
+		- Prestige determines a faction's rank
+			- Similar to an Arena in Clash Royale
+		- When a faction hits a new rank they get a Nexon Shard
+			- Only rewarded if rank is highest faction has earned
+				- Prevent drop-farming
 	- Adds allocate command
 		- A faction can allocate a Nexon Shard into Alpha, Gamma, Delta, Sigma, Epsilon techs
 		- Allocation gives certain buffs. Nexon Shards gained through levelling
@@ -234,7 +269,10 @@ Short-Term Goals (Due August 19): ---> Completed August 17
         Gamma - Increases defensive multiplier
         Delta - Increases Steel output, Decreases upgrade cost
         Sigma - Increases Gems output, Increases Population bonus from Arks
-		
+	- Add new resource, Nexon Shards
+		- All players start with 3
+		- Earned through ranking up (see ranking section)
+	
 1.2 Allegiance Update
 	- okally, askally, noally, okpeace, askpeace, nopeace, infoo^, infof^, reinforce^, strike^, tuts^, help^
 	- Adds alliance and peace requests

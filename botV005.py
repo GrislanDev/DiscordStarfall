@@ -11,14 +11,14 @@ import asyncio
 from discord.ext.commands import Bot
 from discord.ext import commands
 
-from mainV010 import *
+from mainV011 import *
 import text
 
 Client = discord.Client()
 bot_prefix= "$"
 client = commands.Bot(command_prefix=bot_prefix)
 
-world = World("saves\\V001ZortanLiveTest.json")
+world = World("saves\\ZortanV002.json")
 command_info = text.command_info
 tut_info = text.tut_info
 
@@ -33,8 +33,8 @@ def alphanumeric(s):
     return True
 	
 def convert_id(author):
-	""" Returns numerical part of Discord username for id purposes. """
-	return author.split("#")[1]
+    """ Returns numerical part of Discord username for id purposes. """
+    return author.split("#")[1]
 
 def hasAccount(author):
     """ Returns if player already has an account to play with. """
@@ -44,15 +44,20 @@ def hasAccount(author):
 @asyncio.coroutine
 def on_message(message):
     if message.content.startswith(bot_prefix):
-		# Determine info about contents of message
+        # Determine info about contents of message
         content = message.content.split()
         parts = len(content)
-		author = convert_id(str(message.author))
+        author = convert_id(str(message.author))
         start = content[0][1:]
-		
-		# Update world 
+
+        print("Content: {}".format(content))
+        print("Parts: {}".format(parts))
+        print("Author: {}".format(author))
+        print("Start: {}\n".format(start))
+
+        # Update world
         world.update_time()
-		
+	
     #===================================================== INFORMATION COMMANDS HERE =====================================================
 
         if start == "help":
@@ -89,11 +94,11 @@ def on_message(message):
 
         if start == "start":
             if parts == 2:
-                if hasAccount(message.author):
+                if hasAccount(author):
                     # Player musn't already have an account
                     yield from client.send_message(
                         message.channel,
-                        "You already have the faction '{}'. There is a limit to one faction per user.".format(world.info["accounts"][str(message.author)])
+                        "You already have the faction '{}'. There is a limit to one faction per user.".format(world.info["accounts"][author])
                         )
                 elif content[1] in world.info["players"].keys():
                     # Player name musn't already be taken
@@ -103,7 +108,7 @@ def on_message(message):
                     yield from client.send_message(message.channel,"Faction names must be alphanumeric. Please enter another.")
                 else:
                     # Name works, create new player
-                    world.info["accounts"][convert_id(str(message.author))] = content[1]
+                    world.info["accounts"][author] = content[1]
                     newPlayer(content[1], world)
                     world.save_all()
                 
@@ -117,7 +122,7 @@ def on_message(message):
                     # Outpost must exist
                     outpost = world.info["outposts"][content[1]]
                     yield from client.send_message(
-                        message.channel,outpost.information(hasAccount(message.author) and outpost.owner == world.info["accounts"][str(message.author)])
+                        message.channel,outpost.information(hasAccount(author) and outpost.owner == world.info["accounts"][author])
                         )
                 else:
                     yield from client.send_message(message.channel,"No information found. The outpost '{}' does not exist.".format(content[1]))
@@ -125,14 +130,14 @@ def on_message(message):
                 yield from client.send_message(message.channel, "The syntax is {}. Type '$help' for more info.".format(command_info["infoo"][0]))
 
         elif start == "infof":
-            if parts == 1 and hasAccount(message.author):
-                yield from client.send_message(message.channel,world.info["players"][world.save["accounts"][str(message.author)]].information())
+            if parts == 1 and hasAccount(author):
+                yield from client.send_message(message.channel,world.info["players"][world.save["accounts"][author]].information())
             elif parts == 2:
                 if content[1] in world.info["players"]:
                     player = world.info["players"][content[1]]
    
                     yield from client.send_message(
-                        message.channel,player.information(hasAccount(message.author) and world.info["accounts"][str(message.author)] == content[1])
+                        message.channel,player.information(hasAccount(author) and world.info["accounts"][author] == content[1])
                         )
                 else:
                     yield from client.send_message(message.channel,"No information found. The faction '{}' does not exist.".format(content[1]))
@@ -142,9 +147,9 @@ def on_message(message):
         elif start == "infou":
             if parts > 1:
                 content[1] = message.content[message.content.index(" ")+1:]
-                if hasAccount(content[1]):
+                if hasAccount(convert_id(content[1])):
                     yield from client.send_message(
-                        message.channel,world.info["players"][world.info["accounts"][content[1]]].information(content[1]==world.info["accounts"][str(message.author)])
+                        message.channel,world.info["players"][world.info["accounts"][convert_id(content[1])]].information(convert_id(content[1])==world.info["accounts"][author])
                         )
                 else:
                     yield from client.send_message(message.channel,"No information found. {} does not have a faction.".format(content[1]))
@@ -175,8 +180,8 @@ def on_message(message):
             
         elif start == "upgrade":
             if parts == 2:
-                if hasAccount(message.author):
-                    if content[1] in world.info["players"][world.save["accounts"][str(message.author)]].outposts:
+                if hasAccount(author):
+                    if content[1] in world.info["players"][world.save["accounts"][author]].outposts:
                         result = world.info["outposts"][content[1]].upgrade()
                         world.save_all()
                         yield from client.send_message(
@@ -199,8 +204,8 @@ def on_message(message):
                 
         elif start == "build":
             if parts == 4:
-                if hasAccount(message.author):
-                    result = world.info["players"][world.save["accounts"][str(message.author)]].buildOutpost(
+                if hasAccount(author):
+                    result = world.info["players"][world.save["accounts"][author]].buildOutpost(
                                 content[1], content[2], content[3]
                                 )
                     world.save_all()
@@ -215,8 +220,8 @@ def on_message(message):
 
         elif start == "train":
             if parts == 3:
-                if hasAccount(message.author):
-                    result = world.info["players"][world.save["accounts"][str(message.author)]].train(
+                if hasAccount(author):
+                    result = world.info["players"][world.save["accounts"][author]].train(
                                 content[1], content[2]
                                 )
                     world.save_all()
@@ -228,8 +233,8 @@ def on_message(message):
 
         elif start == "reinforce":
             if parts == 4:
-                if hasAccount(message.author):
-                    result = world.info["players"][world.save["accounts"][str(message.author)]].reinforce(
+                if hasAccount(author):
+                    result = world.info["players"][world.save["accounts"][author]].reinforce(
                                 content[1], content[2], content[3]
                                 )
                     world.save_all()
@@ -241,8 +246,8 @@ def on_message(message):
 
         elif start == "strike":
             if parts == 4:
-                if hasAccount(message.author):
-                    result = world.info["players"][world.save["accounts"][str(message.author)]].strike(
+                if hasAccount(author):
+                    result = world.info["players"][world.save["accounts"][author]].strike(
                                 content[1], content[2], content[3]
                                 )
                     world.save_all()
